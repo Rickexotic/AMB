@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo funciona · Club Aeropuerto Santiago</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html"><span class="logo-mark">CA</span>CLUB AEROPUERTO SANTIAGO</a>
+    <nav class="menu" id="menu">
+      <a href="beneficios.html">Beneficios</a>
+      <a href="index.html#niveles">Niveles</a>
+      <a href="como-funciona.html" class="active">Cómo funciona</a>
+      <a href="index.html#app">App</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#unete">Únete Gratis</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" style="--img:url('https://images.unsplash.com/photo-1529074963764-98f45c47344b?q=80&w=1800')">
+  <div class="container">
+    <span class="eyebrow">Cómo funciona</span>
+    <h1>Cuatro pasos, <span class="gold">un viaje mejor.</span></h1>
+    <p>Unirte es gratis y toma minutos. Desde ese momento, cada visita al aeropuerto suma beneficios.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Regístrate</h3><p>Crea tu cuenta gratuita con tu correo o número de teléfono y recibe 100 puntos de bienvenida.</p></div>
+      <div class="step"><div class="n">02</div><h3>Activa tu wallet</h3><p>Tu QR digital queda listo en la app, con todos tus beneficios disponibles en un solo lugar.</p></div>
+      <div class="step"><div class="n">03</div><h3>Usa el aeropuerto</h3><p>Presenta tu QR en comercios, parking y salones asociados. Acumulas puntos en cada compra.</p></div>
+      <div class="step"><div class="n">04</div><h3>Sube de nivel</h3><p>Mientras más viajas, más desbloqueas: de Base a Elite con Fast Track, Lounge y Concierge.</p></div>
+    </div>
+
+    <div class="feature" style="margin-top:60px">
+      <div class="feature-img" style="background-image:url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1400')"></div>
+      <div>
+        <span class="tag">APP</span>
+        <h2>Tu membresía siempre contigo</h2>
+        <p>Gestiona tu nivel, guarda promociones, reserva parking y revisa tu saldo de beneficios. Todo 100% digital, sin tarjetas físicas.</p>
+        <p style="margin-top:28px"><a class="btn btn-primary" href="index.html#unete">Únete gratis</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h2>¿Listo para despegar?</h2>
+    <p>Únete hoy y comienza a disfrutar de una nueva forma de vivir el aeropuerto.</p>
+    <div class="footer-btn"><a class="btn btn-primary" href="index.html#unete">Crear cuenta gratuita</a></div>
+    <div class="copy">© 2026 CLUB AEROPUERTO SANTIAGO · MOCKUP</div>
+  </div>
+</footer>
+
+<script>
+  const menu=document.getElementById('menu');
+  document.getElementById('navToggle').onclick=()=>menu.classList.toggle('open');
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('pointerdown',()=>b.classList.add('pressed'));
+    ['pointerup','pointerleave','pointercancel'].forEach(e=>b.addEventListener(e,()=>setTimeout(()=>b.classList.remove('pressed'),250)));
+  });
+</script>
+</body>
+</html>
