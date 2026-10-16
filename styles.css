@@ -137,6 +137,7 @@ footer p{max-width:800px;margin:20px auto 0;color:#B7C0CF;line-height:1.7}
   .feature.reverse .feature-img{order:0}
 }
 @media(max-width:760px){
+   .tier-inner{padding:28px 22px 24px}
   .nav-toggle{display:flex}
   .menu{position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:rgba(7,15,29,.97);padding:10px 4%;border-bottom:1px solid var(--border);display:none}
   .menu.open{display:flex}
