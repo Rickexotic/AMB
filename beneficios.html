@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beneficios · Club Aeropuerto Santiago</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html"><span class="logo-mark">CA</span>CLUB AEROPUERTO SANTIAGO</a>
+    <nav class="menu" id="menu">
+      <a href="beneficios.html" class="active">Beneficios</a>
+      <a href="index.html#niveles">Niveles</a>
+      <a href="como-funciona.html">Cómo funciona</a>
+      <a href="index.html#app">App</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#unete">Únete Gratis</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" style="--img:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1800')">
+  <div class="container">
+    <span class="eyebrow">Beneficios</span>
+    <h1>Todo el aeropuerto, <span class="gold">a tu favor.</span></h1>
+    <p>Descuentos y privilegios en más de 80 comercios y servicios del Aeropuerto de Santiago, activados desde tu wallet digital.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="feature" id="duty-free">
+    <div class="feature-img" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1400')"></div>
+    <div>
+      <span class="tag">DUTY FREE</span>
+      <h2>Hasta 15% de descuento en tus compras</h2>
+      <p>Perfumería, licores, chocolates y tecnología con precios exclusivos para miembros. Presenta tu QR en caja y el descuento se aplica automáticamente según tu nivel.</p>
+    </div>
+  </div>
+
+  <div class="feature reverse" id="gastronomia">
+    <div class="feature-img" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1400')"></div>
+    <div>
+      <span class="tag">GASTRONOMÍA</span>
+      <h2>Sabores para antes de despegar</h2>
+      <p>Cafeterías, restaurantes y barras asociadas con promociones renovadas cada mes. Desde un café de especialidad hasta una cena completa, siempre con una ventaja para ti.</p>
+    </div>
+  </div>
+
+  <div class="feature" id="parking">
+    <div class="feature-img" style="background-image:url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1400')"></div>
+    <div>
+      <span class="tag">PARKING</span>
+      <h2>30% de descuento con reserva anticipada</h2>
+      <p>Reserva tu estacionamiento desde la app, asegura tu lugar y ahorra en cada viaje. Los niveles superiores acceden a zonas preferentes cercanas a la terminal.</p>
+    </div>
+  </div>
+
+  <div class="feature reverse" id="vip">
+    <div class="feature-img" style="background-image:url('https://images.unsplash.com/photo-1540339832862-474599807836?q=80&w=1400')"></div>
+    <div>
+      <span class="tag">VIP LOUNGE</span>
+      <h2>Acceso preferente a salones VIP</h2>
+      <p>Descansa en un espacio tranquilo con buffet, bebidas, Wi-Fi y asientos premium. Disponible desde el nivel Premium y sin límites para miembros Elite.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <h2>Empieza a disfrutar tus beneficios</h2>
+    <p>Crea tu cuenta gratuita en minutos y activa tu primera promoción hoy.</p>
+    <div class="footer-btn"><a class="btn btn-primary" href="index.html#unete">Crear cuenta gratuita</a></div>
+    <div class="copy">© 2026 CLUB AEROPUERTO SANTIAGO · MOCKUP</div>
+  </div>
+</footer>
+
+<script>
+  const menu=document.getElementById('menu');
+  document.getElementById('navToggle').onclick=()=>menu.classList.toggle('open');
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('pointerdown',()=>b.classList.add('pressed'));
+    ['pointerup','pointerleave','pointercancel'].forEach(e=>b.addEventListener(e,()=>setTimeout(()=>b.classList.remove('pressed'),250)));
+  });
+</script>
+</body>
+</html>
