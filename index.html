@@ -1,103 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Club Aeropuerto Santiago</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+
+:root{
+    --bg:#091426;
+    --bg2:#12274A;
+    --gold:#D6BC67;
+    --gold2:#B89A42;
+    --white:#FFFFFF;
+    --text:#D7DCE5;
+    --card:rgba(255,255,255,.04);
+    --border:rgba(255,255,255,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#070F1D;
+    color:white;
+}
+
+.container{
+    width:min(1400px,92%);
+    margin:auto;
+}
+
+/* NAV */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    backdrop-filter:blur(20px);
+    background:rgba(7,15,29,.85);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.nav{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+}
+
+.logo-badge{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:var(--gold);
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu{
+    display:flex;
+    gap:40px;
+}
+
+.menu a{
+    color:#d9d9d9;
+    text-decoration:none;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.btn-primary{
+    background:var(--gold);
+    color:#091426;
+}
+
+.btn-secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(7,15,29,.95) 0%,
+        rgba(7,15,29,.75) 40%,
+        rgba(7,15,29,.50) 100%
+    ),
+
+    url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1800")
+    center/cover;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:750px;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:999px;
+    border:1px solid rgba(214,188,103,.4);
+    background:rgba(214,188,103,.10);
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    margin-top:25px;
+    font-size:78px;
+    line-height:0.95;
+}
+
+.hero h1 span{
+    color:var(--gold);
+}
+
+.hero p{
+    max-width:600px;
+    margin-top:25px;
+    color:#C7CFDB;
+    font-size:22px;
+    line-height:1.7;
+}
+
+.hero-actions{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+}
+
+.hero-stats{
+    margin-top:60px;
+    display:flex;
+    gap:60px;
+}
+
+.stat h3{
+    color:var(--gold);
+    font-size:42px;
+}
+
+.stat span{
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:.7;
+}
+
+/* BENEFITS */
+
+.section{
+    padding:100px 0;
+}
+
+.section-title{
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:48px;
+}
+
+.section-sub{
+    color:#AAB3C4;
+}
+
+.grid-4{
+    display:grid;
+    gap:25px;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.card{
+    background:var(--card);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--border);
+    border-radius:28px;
+    overflow:hidden;
+}
+
+.card-image{
+    height:220px;
+    background-size:cover;
+    background-position:center;
+}
+
+.card-body{
+    padding:28px;
+}
+
+.tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:2px;
+    background:rgba(214,188,103,.12);
+    color:var(--gold);
+    padding:6px 12px;
+    border-radius:999px;
+}
+
+.card h3{
+    margin-top:15px;
+    font-size:28px;
+}
+
+.card p{
+    margin-top:10px;
+    color:#B7C0CF;
+}
+
+/* TIERS */
+
+.tiers{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+
+.tier{
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.tier-head{
+    padding:40px;
+    background:#0D1B34;
+}
+
+.tier.gold .tier-head{
+    background:linear-gradient(135deg,#182E59,#0F1E3A);
+}
+
+.tier.premium .tier-head{
+    background:linear-gradient(
+        135deg,
+        #314A7C,
+        #20345A
+    );
+}
+
+.tier.elite .tier-head{
+    background:linear-gradient(
+        135deg,
+        #D6BC67,
+        #B89A42
+    );
+    color:#091426;
+}
+
+.tier-body{
+    background:white;
+    color:#1A2235;
+    padding:30px;
+    min-height:280px;
+}
+
+.tier-body li{
+    margin-bottom:14px;
+}
+
+.tier button{
+    width:100%;
+}
+
+/* APP */
+
+.app{
+    display:grid;
+    grid-template-columns:1fr 450px;
+    gap:80px;
+    align-items:center;
+}
+
+.phone{
+    width:360px;
+    margin:auto;
+    border-radius:40px;
+    background:#101A2E;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.wallet{
+    background:linear-gradient(
+        135deg,
+        #D6BC67,
+        #B89A42
+    );
+    color:#091426;
+    border-radius:24px;
+    padding:30px;
+}
+
+.benefit-item{
+    margin-top:15px;
+    padding:18px;
+    border-radius:18px;
+    background:#16233F;
+}
+
+/* FOOTER */
+
+footer{
+    padding:100px 0;
+    background:#040A15;
+    text-align:center;
+}
+
+footer h2{
+    font-size:54px;
+}
+
+footer p{
+    max-width:800px;
+    margin:auto;
+    margin-top:20px;
+    color:#B7C0CF;
+}
+
+.footer-btn{
+    margin-top:40px;
+}
+
+@media(max-width:1100px){
+
+.grid-4,
+.tiers,
+.app{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero-stats{
+    flex-wrap:wrap;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<div class="logo">
+<div class="logo-badge">✈</div>
+<div>
+CLUB AEROPUERTO SANTIAGO
+</div>
+</div>
+
+<nav class="menu">
+#Beneficios</a>
+<a  Nivel</a>
+#Cómo funciona</a>
+<a hrefrs</a>
+</nav>
+
+<button class="btn btn-primary">
+Únete Gratis
+</button>
+
+</div>
+
+</header>
+
 <section class="hero">
 
-    <div class="overlay">
+<div class="container">
 
-        <span class="badge">
-            NUEVO
-        </span>
+<div class="hero-content">
 
-        <h1>
-            Club Aeropuerto Santiago
-        </h1>
+<div class="hero-badge">
+Club Aeropuerto Santiago
+</div>
 
-        <p>
-            Beneficios, experiencias y recompensas diseñadas para cada viaje.
-        </p>
+<h1>
+Tu aeropuerto,<br>
+<span>tus beneficios.</span>
+</h1>
 
-        <div class="actions">
-            <button class="primary">
-                Únete Gratis
-            </button>
+<p>
+Accede a descuentos exclusivos en estacionamientos,
+Duty Free, gastronomía, salones VIP y experiencias
+diseñadas para quienes viajan desde Santiago.
+</p>
 
-            <button class="secondary">
-                Ver Beneficios
-            </button>
-        </div>
+<div class="hero-actions">
 
-    </div>
+<button class="btn btn-primary">
+Únete gratis
+</button>
 
-</section>
+<button class="btn btn-secondary">
+Explorar beneficios
+</button>
 
-<section class="benefits">
+</div>
 
-    <div class="benefit-card">
-        <i>🚗</i>
-        <h3>Parking</h3>
-        <p>Hasta 30% de descuento para socios.</p>
-    </div>
+<div class="hero-stats">
 
-    <div class="benefit-card">
-        <i>⚡</i>
-        <h3>Fast Track</h3>
-        <p>Acceso preferente en controles.</p>
-    </div>
+<div class="stat">
+<h3>26,5M</h3>
+<span>PASAJEROS</span>
+</div>
 
-    <div class="benefit-card">
-        <i>🍽️</i>
-        <h3>Gastronomía</h3>
-        <p>Promociones exclusivas todos los días.</p>
-    </div>
+<div class="stat">
+<h3>+80</h3>
+<span>COMERCIOS</span>
+</div>
 
-    <div class="benefit-card">
-        <i>🛍️</i>
-        <h3>Duty Free</h3>
-        <p>Ofertas reservadas para miembros.</p>
-    </div>
+<div class="stat">
+<h3>4</h3>
+<span>NIVELES</span>
+</div>
 
-</section>
+<div class="stat">
+<h3>100%</h3>
+<span>DIGITAL</span>
+</div>
 
-<section class="tiers">
+</div>
 
-    <div class="tier silver">
-        MEMBER
-    </div>
+</div>
 
-    <div class="tier gold">
-        GOLD
-    </div>
-
-    <div class="tier platinum">
-        PLATINUM
-    </div>
-
-    <div class="tier signature">
-        SIGNATURE
-    </div>
+</div>
 
 </section>
 
-<section class="app-preview">
+<section class="section">
 
-    <div class="phone">
+<div class="container">
 
-        <h3>Hola Ricardo</h3>
+<div class="section-title">
+<h2>Beneficios destacados</h2>
+<p class="section-sub">
+Todo lo que el aeropuerto tiene para ti.
+</p>
+</div>
 
-        <div class="status">
-            Nivel Gold
-        </div>
+<div class="grid-4">
 
-        <div class="benefit">
-            Fast Track Disponible
-        </div>
+<div class="card">
+<div class="card-image"
+style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1000')">
+</div>
+<div class="card-body">
+<span class="tag">DUTY FREE</span>
+<h3>Hasta 15% Off</h3>
+<p>Descuentos exclusivos para miembros.</p>
+</div>
+</div>
 
-        <div class="benefit">
-            20% Parking Disponible
-        </div>
+<div class="card">
+<div class="card-image"
+style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000')">
+</div>
+<div class="card-body">
+<span class="tag">GASTRONOMÍA</span>
+<h3>Promociones</h3>
+<p>Cafeterías y restaurantes asociados.</p>
+</div>
+</div>
 
-        <div class="benefit">
-            Lounge Pass Disponible
-        </div>
+<div class="card">
+<div class="card-image"
+style="background-image:url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1000')">
+</div>
+<div class="card-body">
+<span class="tag">PARKING</span>
+<h3>30% Descuento</h3>
+<p>Reserva anticipada para socios.</p>
+</div>
+</div>
 
-    </div>
+<div class="card">
+<div class="card-image"
+style="background-image:url('https://images.unsplash.com/photo-1540339832862-474599807836?q=80&w=1000')">
+</div>
+<div class="card-body">
+<span class="tag">VIP LOUNGE</span>
+<h3>Acceso Preferente</h3>
+<p>Experiencias premium para viajeros frecuentes.</p>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Elige tu nivel</h2>
+<p class="section-sub">
+Más beneficios mientras más utilizas el aeropuerto.
+</p>
+</div>
+
+<div class="tiers">
+
+<div class="tier">
+
+<div class="tier-head">
+<h3>Base</h3>
+</div>
+
+<div class="tier-body">
+<ul>
+<li>Promociones mensuales</li>
+<li>Wallet digital</li>
+<li>Newsletter</li>
+<li>Acceso beneficios</li>
+</ul>
+
+<button class="btn btn-secondary">
+Comenzar
+</button>
+
+</div>
+
+</div>
+
+<div class="tier gold">
+
+<div class="tier-head">
+<h3>Preferente</h3>
+</div>
+
+<div class="tier-body">
+
+<ul>
+<li>Todo Base</li>
+<li>Parking preferente</li>
+<li>Beneficios Duty Free</li>
+<li>Promociones premium</li>
+</ul>
+
+<button class="btn btn-primary">
+Subir Nivel
+</button>
+
+</div>
+
+</div>
+
+<div class="tier premium">
+
+<div class="tier-head">
+<h3>Premium</h3>
+</div>
+
+<div class="tier-body">
+
+<ul>
+<li>Todo Preferente</li>
+<li>Fast Track</li>
+<li>Benefits Wallet</li>
+<li>Cashback experiencias</li>
+</ul>
+
+<button class="btn btn-primary">
+Activar Premium
+</button>
+
+</div>
+
+</div>
+
+<div class="tier elite">
+
+<div class="tier-head">
+<h3>Elite</h3>
+</div>
+
+<div class="tier-body">
+
+<ul>
+<li>VIP Lounge</li>
+<li>Concierge</li>
+<li>Parking preferente</li>
+<li>Experiencias exclusivas</li>
+</ul>
+
+<button class="btn btn-secondary">
+Conocer Elite
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="container app">
+
+<div>
+
+<h2 style="font-size:56px;">
+Toda tu experiencia de viaje
+en una sola app.
+</h2>
+
+<p style="margin-top:20px;color:#B7C0CF;font-size:20px;">
+Gestiona tu membresía, activa beneficios,
+guarda promociones y accede a tu QR digital.
+</p>
+
+</div>
+
+<div class="phone">
+
+<div class="wallet">
+<h3>Nivel Premium</h3>
+<h1>$48.000</h1>
+Beneficios Disponibles
+</div>
+
+<div class="benefit-item">
+🚗 30% descuento Parking
+</div>
+
+<div class="benefit-item">
+🛋 Lounge Pass
+</div>
+
+<div class="benefit-item">
+🛍 Duty Free 15% Off
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<h2>
+Únete al Club Aeropuerto Santiago
+</h2>
+
+<p>
+Una nueva forma de vivir la experiencia aeroportuaria.
+Beneficios, experiencias y privilegios en cada viaje.
+</p>
+
+<div class="footer-btn">
+<button class="btn btn-primary">
+Crear cuenta gratuita
+</button>
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
