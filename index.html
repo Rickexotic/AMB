@@ -115,6 +115,7 @@
       </div></div>
 
     </div>
+    <div class="tier-dots" id="tierDots" aria-label="Seleccionar nivel"></div>
   </div>
 </section>
 
@@ -175,6 +176,37 @@
   const closePopup = () => { popup.classList.remove('show'); sessionStorage.setItem(KEY, '1'); };
   document.getElementById('popupClose').onclick = closePopup;
   document.getElementById('popupCta').onclick = closePopup;
+
+  // Carrusel de niveles (móvil)
+  const tiers = document.querySelector('.tiers');
+  const tierCards = [...tiers.querySelectorAll('.tier')];
+  const dotsBox = document.getElementById('tierDots');
+  const mq = window.matchMedia('(max-width:760px)');
+  const dots = tierCards.map((card, i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Nivel ' + (i + 1));
+    d.onclick = () => {
+      const left = card.offsetLeft - (tiers.clientWidth - card.offsetWidth) / 2;
+      tiers.scrollTo({ left, behavior: 'smooth' });
+    };
+    dotsBox.appendChild(d);
+    return d;
+  });
+  function updateTiers() {
+    if (!mq.matches) { tierCards.forEach(c => c.classList.remove('active')); dots.forEach(d => d.classList.remove('active')); return; }
+    const center = tiers.scrollLeft + tiers.clientWidth / 2;
+    let best = 0, dist = Infinity;
+    tierCards.forEach((c, i) => {
+      const dd = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+      if (dd < dist) { dist = dd; best = i; }
+    });
+    tierCards.forEach((c, i) => c.classList.toggle('active', i === best));
+    dots.forEach((d, i) => d.classList.toggle('active', i === best));
+  }
+  tiers.addEventListener('scroll', () => requestAnimationFrame(updateTiers), { passive: true });
+  window.addEventListener('resize', updateTiers);
+  updateTiers();
 </script>
 </body>
 </html>
